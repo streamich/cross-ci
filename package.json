@@ -1,0 +1,53 @@
+{
+    "name": "cross-ci",
+    "version": "0.1.0",
+    "bin": {
+        "cross-ci": "./bin/cross-ci.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/streamich/cross-ci.git"
+    },
+    "scripts": {
+        "build": "echo 'There is no build script.' && exit 0",
+        "build:readme": "mmarkdown --src ./build/readme.md --out README.md --scripts ./build/mmd.js",
+        "test": "jest",
+        "eslint": "eslint --ignore-path .gitignore './**/*.js'",
+        "precommit": "npm run eslint",
+        "prepush": "npm t"
+    },
+    "dependencies": {
+    },
+    "devDependencies": {
+        "mmarkdown": "1.0.0",
+        "eslint": "4.19.1",
+        "eslint-config-mailonline": "9.0.0",
+        "mol-conventional-changelog": "1.2.0",
+        "jest": "22.4.3",
+        "jest-tap-reporter": "1.9.0",
+        "husky": "0.14.3"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/mol-conventional-changelog"
+        }
+    },
+    "keywords": [
+        "ci",
+        "cross",
+        "cross-ci",
+        "environment",
+        "variables",
+        "env",
+        "vars",
+        "travis",
+        "circle",
+        "travisci",
+        "circleci"
+    ],
+    "jest": {
+        "reporters": [
+            "jest-tap-reporter"
+        ]
+    }
+}

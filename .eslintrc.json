@@ -1,0 +1,25 @@
+{
+    "extends": "mailonline",
+    "rules": {
+        "import/no-commonjs": "off",
+        "import/unambiguous": "off",
+        "indent": ["error", 4],
+        "spaced-comment": "off",
+        "filenames/match-regex": "off",
+        "global-require": "off",
+        "lines-around-comment": "off",
+        "no-process-env": "off",
+        "no-confusing-arrow": "off",
+        "operator-linebreak": "off",
+        "comma-dangle": "off",
+        "id-match": "off",
+        "sort-keys": "off",
+        "no-void": "off",
+        "no-extra-parens": "off",
+        "arrow-parens": "off",
+        "quotes": "off",
+        "unicorn/no-array-instanceof": "off",
+        "no-inline-comments": "off",
+        "line-comment-position": "off"
+    }
+}
