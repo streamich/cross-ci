@@ -227,4 +227,18 @@ describe('integration', () => {
             expect(evar('BUILD_DIR', 'TRAVIS_BUILD_DIR=/foobar')).toBe('/foobar');
         });
     });
+
+    describe('IS_CI', () => {
+        test('defaults false', () => {
+            expect(evar('IS_CI')).toBe('false');
+        });
+
+        test('uses CI', () => {
+            expect(evar('IS_CI', 'CI=yes')).toBe('true');
+        });
+
+        test('true on Travis', () => {
+            expect(evar('IS_CI', 'TRAVIS=yes')).toBe('true');
+        });
+    });
 });
