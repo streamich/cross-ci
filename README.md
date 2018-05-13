@@ -28,6 +28,7 @@ const vars = require('cross-ci').vars;
 - [`BUILD_COMMIT_PR_URL`](#build_commit_pr_url)
 - [`BUILD_COMMIT_URL`](#build_commit_url)
 - [`BUILD_COMMIT`](#build_commit)
+- [`BUILD_DIR`](#build_dir)
 - [`BUILD_NUM`](#build_num)
 - [`BUILD_PR_NUM`](#build_pr_num)
 - [`BUILD_PR_URL`](#build_pr_url)
@@ -36,6 +37,7 @@ const vars = require('cross-ci').vars;
 - [`CI_NAME`](#ci_name)
 - [`CI_PLATFORM`](#ci_platform)
 - [`GITHUB_TOKEN`](#github_token)
+- [`IS_CI`](#is_ci)
 - [`IS_PR`](#is_pr)
 - [`IS_RELEASE`](#is_release)
 - [`MONTH`](#month)
@@ -88,11 +90,18 @@ SHA1 of the Git commit being built.
 
 
 
+#### `BUILD_DIR`
+
+Path to repository folder.
+
+
+
 #### `BUILD_NUM`
 
 Build number, a numeric value uniquely identifying current build.
 In CircleCI equals to `CIRCLE_BUILD_NUM` environment variable.
 In TravisCI equals to `TRAVIS_BUILD_NUMBER` environment variable.
+In TeamCity equals to `BUILD_NUMBER` environment variable.
 Otherwise tries `BUILD_NUM` environment variable.
 If not build number detected, defaults to `0`.
 
@@ -138,6 +147,7 @@ A user-friendly CI display name.
 
 - `CircleCI` for CircleCI
 - `Travis` for TravisCI
+- `TeamCity` for TeamCity
 
 
 
@@ -153,6 +163,12 @@ A string identifying the CI platform.
 #### `GITHUB_TOKEN`
 
 Equals to `GITHUB_TOKEN` or `GITHUB_ACCESS_TOKEN` environment variables, in that order.
+
+
+
+#### `IS_CI`
+
+Boolean indicating if script runs in a CI environment.
 
 
 
@@ -183,6 +199,7 @@ detect project name:
 
 - CircleCI: [`CIRCLE_PROJECT_REPONAME`](https://circleci.com/docs/1.0/environment-variables/#build-details)
 - TravisCI: [`TRAVIS_REPO_SLUG`](https://docs.travis-ci.com/user/environment-variables/)
+- TeamCity: [`TEAMCITY_PROJECT_NAME`](https://confluence.jetbrains.com/display/TCD9/Predefined+Build+Parameters)
 
 If environment variables are empty, it will also try to extract
 project name from `package.json`. First it will try `name` field.
@@ -223,28 +240,10 @@ Defaults to `['master', 'develop', 'next-release', 'release']`.
 
 #### `UPLOAD_PATH`
 
-Relative upload path where artifacts will be stored.
-For a pull request it defaults to:
-
-```js
-`/builds/${PROJECT_NAME}/prs/${YEAR}-${MONTH}/${BUILD_VERSION}`
-```
-
-Which results into something like:
+Relative upload path for artifacts. Defaults to:
 
 ```
-/builds/repo/prs/2018-04/1.2.3-pr-1.1`
-```
-For not pull request it defaults to:
-
-```js
-`/builds/${PROJECT_NAME}/${BUILD_BRANCH}`
-```
-
-Which results into something like:
-
-```
-/builds/repo/master`
+builds/${PROJECT_NAME}/${BUILD_VERSION}
 ```
 
 
