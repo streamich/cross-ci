@@ -1,5 +1,5 @@
 const vars = require('../index');
 
-test('matches snapshot', () => {
+test('PROJECT_NAME is correct', () => {
     expect(vars.PROJECT_NAME).toBe('cross-ci');
 });
