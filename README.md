@@ -64,10 +64,6 @@ In TravisCI it is set to `TRAVIS_PULL_REQUEST_BRANCH` if the build originated
 as a pull request, or `TRAVIS_BRANCH` otherwise.
 If `BUILD_BRANCH` environment variable is present, uses that.
 
-```shell
-ci echo --message "branch: \${BUILD_BRANCH}"
-```
-
 
 
 #### `BUILD_COMMIT_PR_URL`
