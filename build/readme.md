@@ -1,8 +1,8 @@
 # cross-ci
 
-`cross-ci` standardizes environment variables across different CI environments. For example,
+`cross-ci` standardizes environment variables for CI. For example,
 your can simply use `BUILD_BRANCH` variable in all CI runners instead of `CIRCLE_BRANCH` in
-CircleCI and `TRAVIS_PULL_REQUEST_BRANCH` in Travis.
+CircleCI or `TRAVIS_PULL_REQUEST_BRANCH` in Travis.
 
 ##### Install
 

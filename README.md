@@ -1,8 +1,8 @@
 # cross-ci
 
-`cross-ci` standardizes environment variables across different CI environments. For example,
+`cross-ci` standardizes environment variables for CI. For example,
 your can simply use `BUILD_BRANCH` variable in all CI runners instead of `CIRCLE_BRANCH` in
-CircleCI and `TRAVIS_PULL_REQUEST_BRANCH` in Travis.
+CircleCI or `TRAVIS_PULL_REQUEST_BRANCH` in Travis.
 
 ##### Install
 
@@ -24,35 +24,35 @@ const vars = require('cross-ci').vars;
 
 ## Variables
 
-- [`BUILD_BRANCH`](#build_branch-variable)
-- [`BUILD_COMMIT_PR_URL`](#build_commit_pr_url-variable)
-- [`BUILD_COMMIT_URL`](#build_commit_url-variable)
-- [`BUILD_COMMIT`](#build_commit-variable)
-- [`BUILD_NUM`](#build_num-variable)
-- [`BUILD_PR_NUM`](#build_pr_num-variable)
-- [`BUILD_PR_URL`](#build_pr_url-variable)
-- [`BUILD_URL`](#build_url-variable)
-- [`BUILD_VERSION`](#build_version-variable)
-- [`CI_NAME`](#ci_name-variable)
-- [`CI_PLATFORM`](#ci_platform-variable)
-- [`GITHUB_TOKEN`](#github_token-variable)
-- [`IS_PR`](#is_pr-variable)
-- [`IS_RELEASE`](#is_release-variable)
-- [`MONTH`](#month-variable)
-- [`PROJECT_NAME`](#project_name-variable)
-- [`PROJECT_OWNER`](#project_owner-variable)
-- [`PROJECT_URL`](#project_url-variable)
-- [`PROJECT_VERSION`](#project_version-variable)
-- [`RELEASE_BRANCHES`](#release_branches-variable)
-- [`UPLOAD_PATH`](#upload_path-variable)
-- [`YEAR`](#year-variable)
+- [`BUILD_BRANCH`](#build_branch)
+- [`BUILD_COMMIT_PR_URL`](#build_commit_pr_url)
+- [`BUILD_COMMIT_URL`](#build_commit_url)
+- [`BUILD_COMMIT`](#build_commit)
+- [`BUILD_NUM`](#build_num)
+- [`BUILD_PR_NUM`](#build_pr_num)
+- [`BUILD_PR_URL`](#build_pr_url)
+- [`BUILD_URL`](#build_url)
+- [`BUILD_VERSION`](#build_version)
+- [`CI_NAME`](#ci_name)
+- [`CI_PLATFORM`](#ci_platform)
+- [`GITHUB_TOKEN`](#github_token)
+- [`IS_PR`](#is_pr)
+- [`IS_RELEASE`](#is_release)
+- [`MONTH`](#month)
+- [`PROJECT_NAME`](#project_name)
+- [`PROJECT_OWNER`](#project_owner)
+- [`PROJECT_URL`](#project_url)
+- [`PROJECT_VERSION`](#project_version)
+- [`RELEASE_BRANCHES`](#release_branches)
+- [`UPLOAD_PATH`](#upload_path)
+- [`YEAR`](#year)
 
 
 
 
 
 
-#### `BUILD_BRANCH` Variable
+#### `BUILD_BRANCH`
 
 
 
@@ -68,19 +68,19 @@ ci echo --message "branch: \${BUILD_BRANCH}"
 
 
 
-#### `BUILD_COMMIT_PR_URL` Variable
+#### `BUILD_COMMIT_PR_URL`
 
 URL of PR build commit.
 
 
 
-#### `BUILD_COMMIT_URL` Variable
+#### `BUILD_COMMIT_URL`
 
 URL of build commit.
 
 
 
-#### `BUILD_COMMIT` Variable
+#### `BUILD_COMMIT`
 
 
 
@@ -88,7 +88,7 @@ SHA1 of the Git commit being built.
 
 
 
-#### `BUILD_NUM` Variable
+#### `BUILD_NUM`
 
 Build number, a numeric value uniquely identifying current build.
 In CircleCI equals to `CIRCLE_BUILD_NUM` environment variable.
@@ -98,7 +98,7 @@ If not build number detected, defaults to `0`.
 
 
 
-#### `BUILD_PR_NUM` Variable
+#### `BUILD_PR_NUM`
 
 Number of the pull request on GitHub.
 In CircleCI pull request number is extracted from `CI_PULL_REQUEST` environment variable.
@@ -111,19 +111,19 @@ Otherwise defaults to `0`.
 
 
 
-#### `BUILD_PR_URL` Variable
+#### `BUILD_PR_URL`
 
 URL to GitHub PR page.
 
 
 
-#### `BUILD_URL` Variable
+#### `BUILD_URL`
 
 URL to CI build page.
 
 
 
-#### `BUILD_VERSION` Variable
+#### `BUILD_VERSION`
 
 A human-readable string uniquely identifying current build.
 For pull requests will equal to something like `x.y.z-pr-1.1`.
@@ -132,7 +132,7 @@ it will contain a branch name, like `x.y.z-master.1`.
 
 
 
-#### `CI_NAME` Variable
+#### `CI_NAME`
 
 A user-friendly CI display name.
 
@@ -141,7 +141,7 @@ A user-friendly CI display name.
 
 
 
-#### `CI_PLATFORM` Variable
+#### `CI_PLATFORM`
 
 A string identifying the CI platform.
 
@@ -150,31 +150,31 @@ A string identifying the CI platform.
 
 
 
-#### `GITHUB_TOKEN` Variable
+#### `GITHUB_TOKEN`
 
 Equals to `GITHUB_TOKEN` or `GITHUB_ACCESS_TOKEN` environment variables, in that order.
 
 
 
-#### `IS_PR` Variable
+#### `IS_PR`
 
 Boolean, `true` if the current build is triggered by a pull request.
 
 
 
-#### `IS_RELEASE` Variable
+#### `IS_RELEASE`
 
 Is `true` if currently built branch is one of `RELEASE_BRANCHES`.
 
 
 
-#### `MONTH` Variable
+#### `MONTH`
 
 Current month numeric value as a string of length two.
 
 
 
-#### `PROJECT_NAME` Variable
+#### `PROJECT_NAME`
 
 
 
@@ -191,7 +191,7 @@ try `repository.url` field.
 
 
 
-#### `PROJECT_OWNER` Variable
+#### `PROJECT_OWNER`
 
 
 
@@ -202,26 +202,26 @@ repository owner from `package.json`, using `repository.url` field.
 
 
 
-#### `PROJECT_URL` Variable
+#### `PROJECT_URL`
 
 Link to project on GitHub.
 
 
 
-#### `PROJECT_VERSION` Variable
+#### `PROJECT_VERSION`
 
 Semver version of your project. Taken from `package.json`.
 
 
 
-#### `RELEASE_BRANCHES` Variable
+#### `RELEASE_BRANCHES`
 
 Names of branches which should trigger a release when they are built.
 Defaults to `['master', 'develop', 'next-release', 'release']`.
 
 
 
-#### `UPLOAD_PATH` Variable
+#### `UPLOAD_PATH`
 
 Relative upload path where artifacts will be stored.
 For a pull request it defaults to:
@@ -249,7 +249,7 @@ Which results into something like:
 
 
 
-#### `YEAR` Variable
+#### `YEAR`
 
 Current year as a four character long string.
 
