@@ -1,6 +1,6 @@
 {
     "name": "cross-ci",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "bin": {
         "cross-ci": "./bin/cross-ci.js"
     },
@@ -16,8 +16,7 @@
         "precommit": "npm run eslint",
         "prepush": "npm t"
     },
-    "dependencies": {
-    },
+    "dependencies": {},
     "devDependencies": {
         "glob": "^7.1.2",
         "mmarkdown": "1.0.0",
