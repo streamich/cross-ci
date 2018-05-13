@@ -213,4 +213,18 @@ describe('integration', () => {
             expect(evar('PROJECT_URL').substr(0, 4)).toBe('http');
         });
     });
+
+    describe('BUILD_DIR', () => {
+        test('defaults to current working directory', () => {
+            expect(evar('BUILD_DIR')).toBe(process.cwd());
+        });
+
+        test('uses CIRCLE_WORKING_DIRECTORY', () => {
+            expect(evar('BUILD_DIR', 'CIRCLE_WORKING_DIRECTORY=/foobar')).toBe('/foobar');
+        });
+
+        test('uses TRAVIS_BUILD_DIR', () => {
+            expect(evar('BUILD_DIR', 'TRAVIS_BUILD_DIR=/foobar')).toBe('/foobar');
+        });
+    });
 });
