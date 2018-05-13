@@ -1,6 +1,6 @@
 {
     "name": "cross-ci",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "bin": {
         "cross-ci": "./bin/cross-ci.js"
     },
