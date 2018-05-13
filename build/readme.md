@@ -1,15 +1,13 @@
 # cross-ci
 
-Normalizes environment variables across different CI environments.
+`cross-ci` standardizes environment variables for CI. For example,
+your can simply use `BUILD_BRANCH` variable in all CI runners instead of `CIRCLE_BRANCH` in
+CircleCI or `TRAVIS_PULL_REQUEST_BRANCH` in Travis.
 
 ##### Install
 
 ```
-npm install -global cross-ci
-
-or
-
-npm install --save-dev cross-ci
+npm install cross-ci
 ```
 
 ##### CLI usage
@@ -26,9 +24,6 @@ const vars = require('cross-ci').vars;
 
 
 ## Variables
-
-`ci-scripts` pre-generates and normalizes across CI runners commonly used environment variables.
-The convetion is to use all upper case letters for "global" variables.
 
 ```mmd
 return scripts.variableList();
