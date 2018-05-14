@@ -174,6 +174,14 @@ describe('integration', () => {
         test('uses GITHUB_ACCESS_TOKEN', () => {
             expect(evar('GITHUB_TOKEN', 'GITHUB_ACCESS_TOKEN=foobar')).toBe('foobar');
         });
+
+        test('uses GH_TOKEN', () => {
+            expect(evar('GITHUB_TOKEN', 'GH_TOKEN=foobar')).toBe('foobar');
+        });
+
+        test('uses GIT_CREDENTIALS', () => {
+            expect(evar('GITHUB_TOKEN', 'GIT_CREDENTIALS=foobar')).toBe('foobar');
+        });
     });
 
     describe('PROJECT_NAME', () => {
