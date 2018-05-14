@@ -7,7 +7,7 @@ CircleCI or `TRAVIS_PULL_REQUEST_BRANCH` in Travis.
 ##### Install
 
 ```
-npm install cross-ci
+npm i -g cross-ci
 ```
 
 ##### CLI usage
