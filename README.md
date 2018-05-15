@@ -7,7 +7,13 @@ CircleCI or `TRAVIS_PULL_REQUEST_BRANCH` in Travis.
 ##### Install
 
 ```
-npm i cross-ci
+npm i -g cross-ci
+```
+
+##### CLI usage
+
+```
+cross-ci ./your-script.sh
 ```
 
 ##### Node usage
@@ -15,13 +21,6 @@ npm i cross-ci
 ```js
 const vars = require('cross-ci').vars;
 ```
-
-##### CLI usage
-
-```
-npx cross-ci printenv BUILD_COMMIT_URL
-```
-
 
 ## Variables
 
@@ -154,6 +153,7 @@ A string identifying the CI platform.
 
 - `circle` for CircleCI
 - `travis` for TravisCI
+- `teamcity` for TeamCity
 
 
 
