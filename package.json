@@ -9,7 +9,7 @@
         "url": "git+ssh://git@github.com/streamich/cross-ci.git"
     },
     "scripts": {
-        "build": "echo 'There is no build script.' && exit 0",
+        "build": "npm run build:readme",
         "build:readme": "mmarkdown --src ./build/readme.md --out README.md --scripts ./build/mmd.js",
         "test": "jest",
         "eslint": "eslint --ignore-path .gitignore './**/*.js'",
