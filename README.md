@@ -7,13 +7,7 @@ CircleCI or `TRAVIS_PULL_REQUEST_BRANCH` in Travis.
 ##### Install
 
 ```
-npm install cross-ci
-```
-
-##### CLI usage
-
-```
-cross-ci ./your-script.sh
+npm i cross-ci
 ```
 
 ##### Node usage
@@ -21,6 +15,13 @@ cross-ci ./your-script.sh
 ```js
 const vars = require('cross-ci').vars;
 ```
+
+##### CLI usage
+
+```
+npx cross-ci printenv BUILD_COMMIT_PR_URL
+```
+
 
 ## Variables
 
