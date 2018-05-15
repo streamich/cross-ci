@@ -19,7 +19,7 @@ const vars = require('cross-ci').vars;
 ##### CLI usage
 
 ```
-npx cross-ci printenv BUILD_COMMIT_PR_URL
+npx cross-ci printenv BUILD_COMMIT_URL
 ```
 
 
