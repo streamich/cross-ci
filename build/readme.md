@@ -30,6 +30,21 @@ return scripts.variableList();
 ```
 
 
+## Pseudo Commands
+
+##### `:echo`
+
+```shell
+npx cross-ci :echo node --eval "\"console.log('\${PROJECT_NAME}')\""
+```
+
+##### `:run`
+
+```shell
+npx cross-ci :run node --eval "\"console.log('\${PROJECT_NAME}')\""
+```
+
+
 ## Examples
 
 Upload assets to S3.
