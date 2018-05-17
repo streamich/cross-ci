@@ -72,7 +72,7 @@ npx cross-ci :run \
 
 ```shell
 GITHUB_TOKEN=XXXXXXXX \
-    npx cross-ci :echo \
+    npx cross-ci :run \
         curl -X POST -H "Content-Type: application/json" \
             --data "'{\"body\": \"Build version: \\\`\${BUILD_VERSION}\\\` :crossed_fingers: [\\\`\${BUILD_BRANCH}\\\`](\${BRANCH_URL}) on [\${CI_NAME}](\${BUILD_URL}) :tada:\"}'" \
         "https://api.github.com/repos/\${PROJECT_OWNER}/\${PROJECT_NAME}/issues/\${BUILD_PR_NUM}/comments?access_token=\${GITHUB_TOKEN}"
