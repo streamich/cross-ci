@@ -57,12 +57,22 @@ npx cross-ci printenv BUILD_COMMIT_URL
 Upload assets to S3.
 
 ```
-npx cross-ci :echo \
-    "AWS_ACCESS_KEY_ID=\${process.env.AWS_ACCESS_KEY_STAGING}" \
-    "AWS_SECRET_ACCESS_KEY=\${process.env.AWS_SECRET_STAGING}" \
-        s3 sync ./public "s3://bucket/builds/\${PROJECT_NAME}/\${BUILD_VERSION}/public" \
-            --region eu-west-1 \
-            --acl public-read
+npx cross-ci :run \
+    s3 sync ./public "s3://bucket/builds/\${PROJECT_NAME}/\${BUILD_VERSION}/public" \
+        --region eu-west-1 \
+        --acl public-read
+```
+
+Post message to Slack.
+
+```shell
+npx cross-ci :run \
+    curl -X POST -H 'Content-type: application/json' \
+        --data "'{\
+            \"text\":\"Built \\\`<\${PROJECT_URL}|\${PROJECT_NAME}>\\\` :crossed_fingers: \\\`<\${BRANCH_URL}|\${BUILD_BRANCH}>\\\` :crossed_fingers: \\\`\${BUILD_VERSION}\\\` on <\${BUILD_URL}|\${CI_NAME}>\", \
+            \"username\": \"cross-ci\", \
+            \"icon_emoji\": \":clap:\"}'" \
+        https://hooks.slack.com/services/XXXX/XXXX/XXXXXXXX
 ```
 
 ## Variable Reference
