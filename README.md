@@ -68,7 +68,7 @@ npx cross-ci :run node --eval "\"console.log('\${PROJECT_NAME}')\""
 
 ## Examples
 
-Upload assets to S3.
+##### Upload to S3
 
 ```
 npx cross-ci :run \
@@ -77,16 +77,26 @@ npx cross-ci :run \
         --acl public-read
 ```
 
-Post message to Slack.
+##### Post to Slack
 
 ```shell
 npx cross-ci :run \
     curl -X POST -H 'Content-type: application/json' \
         --data "'{\
-            \"text\":\"Built \\\`<\${PROJECT_URL}|\${PROJECT_NAME}>\\\` :crossed_fingers: \\\`<\${BRANCH_URL}|\${BUILD_BRANCH}>\\\` :crossed_fingers: \\\`\${BUILD_VERSION}\\\` on <\${BUILD_URL}|\${CI_NAME}>\", \
+            \"text\":\"Built \\\`<\${PROJECT_URL}|\${PROJECT_NAME}>\\\` :crossed_fingers: \\\`<\${BRANCH_URL}|\${BUILD_BRANCH}>\\\` :crossed_fingers: \\\`\${BUILD_VERSION}\\\` on <\${BUILD_URL}|\${CI_NAME}> :tada:\", \
             \"username\": \"cross-ci\", \
             \"icon_emoji\": \":clap:\"}'" \
         https://hooks.slack.com/services/XXXX/XXXX/XXXXXXXX
+```
+
+##### Post to GitHub
+
+```shell
+GITHUB_TOKEN=XXXXXXXX \
+    npx cross-ci :echo \
+        curl -X POST -H "Content-Type: application/json" \
+            --data "'{\"body\": \"Build version: \\\`\${BUILD_VERSION}\\\` :crossed_fingers: [\\\`\${BUILD_BRANCH}\\\`](\${BRANCH_URL}) on [\${CI_NAME}](\${BUILD_URL}) :tada:\"}'" \
+        "https://api.github.com/repos/\${PROJECT_OWNER}/\${PROJECT_NAME}/issues/\${BUILD_PR_NUM}/comments?access_token=\${GITHUB_TOKEN}"
 ```
 
 ## Variable Reference
