@@ -52,6 +52,21 @@ npx cross-ci printenv BUILD_COMMIT_URL
 
 
 
+## Examples
+
+Upload assets to S3.
+
+```
+npx cross-ci :echo \
+    "AWS_ACCESS_KEY_ID=\${process.env.AWS_ACCESS_KEY_STAGING}" \
+    "AWS_SECRET_ACCESS_KEY=\${process.env.AWS_SECRET_STAGING}" \
+        s3 sync ./public "s3://bucket/builds/\${PROJECT_NAME}/\${BUILD_VERSION}/public" \
+            --region eu-west-1 \
+            --acl public-read
+```
+
+## Variable Reference
+
 
 
 #### `BUILD_BRANCH`
