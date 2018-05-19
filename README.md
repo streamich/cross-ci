@@ -70,7 +70,7 @@ npx cross-ci :run node --eval "\"console.log('\${PROJECT_NAME}')\""
 
 ##### Upload to S3
 
-```
+```shell
 npx cross-ci :run \
     s3 sync ./public "s3://bucket/builds/\${PROJECT_NAME}/\${BUILD_VERSION}/public" \
         --region eu-west-1 \
