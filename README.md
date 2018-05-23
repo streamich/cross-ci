@@ -40,6 +40,8 @@ npx cross-ci printenv BUILD_COMMIT_URL
 - [`IS_CI`](#is_ci)
 - [`IS_PR`](#is_pr)
 - [`IS_RELEASE`](#is_release)
+- [`JOB_NUM`](#job_num)
+- [`JOB_URL`](#job_url)
 - [`MONTH`](#month)
 - [`PROJECT_NAME`](#project_name)
 - [`PROJECT_OWNER`](#project_owner)
@@ -137,11 +139,15 @@ SHA1 of the Git commit being built.
 
 #### `BUILD_DIR`
 
+
+
 Path to repository folder.
 
 
 
 #### `BUILD_NUM`
+
+
 
 Build number, a numeric value uniquely identifying current build.
 In CircleCI equals to `CIRCLE_BUILD_NUM` environment variable.
@@ -154,7 +160,9 @@ If not build number detected, defaults to `0`.
 
 #### `BUILD_PR_NUM`
 
-Number of the pull request on GitHub.
+
+
+Number of the pull request on Git platform.
 In CircleCI pull request number is extracted from `CI_PULL_REQUEST` environment variable.
 Which is a link to the pull request of the current job.
 In TravicCI `TRAVIS_PULL_REQUEST` environment varialbe is used.
@@ -173,6 +181,8 @@ URL to GitHub PR page.
 
 #### `BUILD_URL`
 
+
+
 URL to CI build page.
 
 
@@ -188,21 +198,27 @@ it will contain a branch name, like `x.y.z-master.1`.
 
 #### `CI_NAME`
 
+
+
 A user-friendly CI display name.
 
 - `CircleCI` for CircleCI
 - `Travis` for TravisCI
 - `TeamCity` for TeamCity
+- `Gitlab` for Gitlab
 
 
 
 #### `CI_PLATFORM`
+
+
 
 A string identifying the CI platform.
 
 - `circle` for CircleCI
 - `travis` for TravisCI
 - `teamcity` for TeamCity
+- `gitlab` for Gitlab
 
 
 
@@ -214,11 +230,15 @@ Equals to `GITHUB_TOKEN` or `GITHUB_ACCESS_TOKEN` environment variables, in that
 
 #### `IS_CI`
 
+
+
 Boolean indicating if script runs in a CI environment.
 
 
 
 #### `IS_PR`
+
+
 
 Boolean, `true` if the current build is triggered by a pull request.
 
@@ -227,6 +247,18 @@ Boolean, `true` if the current build is triggered by a pull request.
 #### `IS_RELEASE`
 
 Is `true` if currently built branch is one of `RELEASE_BRANCHES`.
+
+
+
+#### `JOB_NUM`
+
+CI service job number
+
+
+
+#### `JOB_URL`
+
+Link to the CI service job
 
 
 
@@ -273,7 +305,8 @@ Link to project on GitHub.
 
 #### `PROJECT_VERSION`
 
-Semver version of your project. Taken from `package.json`.
+Semver version of your project. Taken from `package.json`. Othewise
+defaults to `0.0.0`.
 
 
 

@@ -17,8 +17,8 @@ describe('integration', () => {
     });
 
     describe('BRANCH_PRODUCTION', () => {
-        test('defaults to master', () => {
-            expect(evar('BRANCH_PRODUCTION')).toBe('master');
+        test('defaults to production', () => {
+            expect(evar('BRANCH_PRODUCTION')).toBe('production');
         });
 
         test('can be overwritten', () => {
@@ -27,8 +27,8 @@ describe('integration', () => {
     });
 
     describe('BRANCH_STAGING', () => {
-        test('defaults to next-release', () => {
-            expect(evar('BRANCH_STAGING')).toBe('next-release');
+        test('defaults to master', () => {
+            expect(evar('BRANCH_STAGING')).toBe('master');
         });
 
         test('can be overwritten', () => {
@@ -120,7 +120,7 @@ describe('integration', () => {
 
     describe('BUILD_PR_URL', () => {
         test('returns URL', () => {
-            expect(evar('BUILD_PR_URL').substr(0, 4)).toBe('http');
+            expect(evar('BUILD_PR_URL', 'BUILD_PR_NUM=123').substr(0, 4)).toBe('http');
         });
     });
 
