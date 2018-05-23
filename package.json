@@ -16,7 +16,9 @@
         "precommit": "npm run eslint",
         "prepush": "npm t"
     },
-    "dependencies": {},
+    "dependencies": {
+        "env-ci": "^2.1.0"
+    },
     "devDependencies": {
         "glob": "7.1.2",
         "mmarkdown": "1.0.0",
