@@ -36,6 +36,8 @@ npx cross-ci printenv BUILD_COMMIT_URL
 - [`BUILD_VERSION`](#build_version)
 - [`CI_NAME`](#ci_name)
 - [`CI_PLATFORM`](#ci_platform)
+- [`GIT_PLATFORM`](#git_platform)
+- [`GIT_REMOTE`](#git_remote)
 - [`GITHUB_TOKEN`](#github_token)
 - [`IS_CI`](#is_ci)
 - [`IS_PR`](#is_pr)
@@ -69,6 +71,16 @@ npx cross-ci :run node --eval "\"console.log('\${PROJECT_NAME}')\""
 ```
 
 ## Examples
+
+##### Provide Evn Vars to Webpack, from `package.json`
+
+```json
+{
+    "scripts": {
+        "build": "cross-ci webpack -p"
+    }
+}
+```
 
 ##### Upload to S3
 
@@ -109,11 +121,7 @@ GITHUB_TOKEN=XXXXXXXX \
 
 
 
-Name of the Git branch which is currently being built.
-In CircleCI the `CIRCLE_BRANCH` environment variable is used.
-In TravisCI it is set to `TRAVIS_PULL_REQUEST_BRANCH` if the build originated
-as a pull request, or `TRAVIS_BRANCH` otherwise.
-If `BUILD_BRANCH` environment variable is present, uses that.
+Git branch being built or targeted by a pull request.
 
 
 
@@ -149,12 +157,7 @@ Path to repository folder.
 
 
 
-Build number, a numeric value uniquely identifying current build.
-In CircleCI equals to `CIRCLE_BUILD_NUM` environment variable.
-In TravisCI equals to `TRAVIS_BUILD_NUMBER` environment variable.
-In TeamCity equals to `BUILD_NUMBER` environment variable.
-Otherwise tries `BUILD_NUM` environment variable.
-If not build number detected, defaults to `0`.
+CI service build number.
 
 
 
@@ -162,14 +165,7 @@ If not build number detected, defaults to `0`.
 
 
 
-Number of the pull request on Git platform.
-In CircleCI pull request number is extracted from `CI_PULL_REQUEST` environment variable.
-Which is a link to the pull request of the current job.
-In TravicCI `TRAVIS_PULL_REQUEST` environment varialbe is used.
-
-
-Will also try `BUILD_PR_NUM` environment variable.
-Otherwise defaults to `0`.
+Pull request (aka Merge request) number. Defaults to `0`.
 
 
 
@@ -200,12 +196,7 @@ it will contain a branch name, like `x.y.z-master.1`.
 
 
 
-A user-friendly CI display name.
-
-- `CircleCI` for CircleCI
-- `Travis` for TravisCI
-- `TeamCity` for TeamCity
-- `Gitlab` for Gitlab
+CI service Commercial name (e.g. `Travis`, `CircleCI`, `TeamCity`).
 
 
 
@@ -213,18 +204,27 @@ A user-friendly CI display name.
 
 
 
-A string identifying the CI platform.
+Standardized CI service name (e.g. `travis`, `circle`, `gitlab`).
 
-- `circle` for CircleCI
-- `travis` for TravisCI
-- `teamcity` for TeamCity
-- `gitlab` for Gitlab
+
+
+#### `GIT_PLATFORM`
+
+
+
+Git version control system used
+
+
+
+#### `GIT_REMOTE`
+
+Git remote used.
 
 
 
 #### `GITHUB_TOKEN`
 
-Equals to `GITHUB_TOKEN` or `GITHUB_ACCESS_TOKEN` environment variables, in that order.
+Equals to `GITHUB_TOKEN`, `GITHUB_ACCESS_TOKEN`, `GH_TOKEN`, or `GIT_CREDENTIALS` environment variables, in that order.
 
 
 
@@ -272,17 +272,7 @@ Current month numeric value as a string of length two.
 
 
 
-GitHub project name. Below is a list of environment variables per CI used to
-detect project name:
-
-- CircleCI: [`CIRCLE_PROJECT_REPONAME`](https://circleci.com/docs/1.0/environment-variables/#build-details)
-- TravisCI: [`TRAVIS_REPO_SLUG`](https://docs.travis-ci.com/user/environment-variables/)
-- TeamCity: [`TEAMCITY_PROJECT_NAME`](https://confluence.jetbrains.com/display/TCD9/Predefined+Build+Parameters)
-
-If environment variables are empty, it will also try to extract
-project name from `package.json`. First it will try `name` field.
-If project name is not specified in `name` field, it will
-try `repository.url` field.
+GitHub project name.
 
 
 
@@ -290,10 +280,7 @@ try `repository.url` field.
 
 
 
-User name or organization name that owns the repository. In CircleCI uses
-`CIRCLE_PROJECT_USERNAME` env var, in TravisCI it extracts repository
-owner from `user/repo` slug `TRAVIS_REPO_SLUG`. It will also try to extract
-repository owner from `package.json`, using `repository.url` field.
+User name or organization name that owns the repository.
 
 
 
@@ -312,8 +299,8 @@ defaults to `0.0.0`.
 
 #### `RELEASE_BRANCHES`
 
-Names of branches which should trigger a release when they are built.
-Defaults to `['master', 'develop', 'next-release', 'release']`.
+Names of branches which should trigger a release,
+defaults to `['master', 'production']`.
 
 
 

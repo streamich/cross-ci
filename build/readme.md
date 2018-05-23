@@ -47,6 +47,16 @@ npx cross-ci :run node --eval "\"console.log('\${PROJECT_NAME}')\""
 
 ## Examples
 
+##### Provide Evn Vars to Webpack, from `package.json`
+
+```json
+{
+    "scripts": {
+        "build": "cross-ci webpack -p"
+    }
+}
+```
+
 ##### Upload to S3
 
 ```shell
