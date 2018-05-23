@@ -120,7 +120,7 @@ describe('integration', () => {
 
     describe('BUILD_PR_URL', () => {
         test('returns URL', () => {
-            expect(evar('BUILD_PR_URL').substr(0, 4)).toBe('http');
+            expect(evar('BUILD_PR_URL', 'BUILD_PR_NUM=123').substr(0, 4)).toBe('http');
         });
     });
 
