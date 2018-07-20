@@ -57,6 +57,13 @@ npx cross-ci :run node --eval "\"console.log('\${PROJECT_NAME}')\""
 }
 ```
 
+##### Update GitHub status
+
+```shell
+npx cross-ci :run \
+    npx commit-status success Storybook "'\${BUILD_VERSION}'" "'https://example.com'"
+```
+
 ##### Upload to S3
 
 ```shell

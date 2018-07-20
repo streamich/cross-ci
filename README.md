@@ -82,11 +82,18 @@ npx cross-ci :run node --eval "\"console.log('\${PROJECT_NAME}')\""
 }
 ```
 
+##### Update GitHub status
+
+```shell
+npx cross-ci :run \
+    npx commit-status success Storybook "'\${BUILD_VERSION}'" "'https://example.com'"
+```
+
 ##### Upload to S3
 
 ```shell
 npx cross-ci :run \
-    aws s3 sync ./public "s3://bucket/builds/\${PROJECT_NAME}/\${BUILD_VERSION}/public" \
+    s3 sync ./public "s3://bucket/builds/\${PROJECT_NAME}/\${BUILD_VERSION}/public" \
         --region eu-west-1 \
         --acl public-read
 ```
