@@ -2,7 +2,7 @@
 
 `cross-ci` standardizes environment variables for CI. For example,
 your can simply use `BUILD_BRANCH` variable in all CI runners instead of `CIRCLE_BRANCH` in
-CircleCI or `TRAVIS_PULL_REQUEST_BRANCH` in Travis.
+CircleCI or `TRAVIS_PULL_REQUEST_BRANCH` in Travis. Supports [all `env-ci` implemented services](https://github.com/pvdlg/env-ci#supported-ci).
 
 ##### Install
 
@@ -121,6 +121,14 @@ GITHUB_TOKEN=XXXXXXXX \
             --data "'{\"body\": \"Build version: \\\`\${BUILD_VERSION}\\\` :crossed_fingers: [\\\`\${BUILD_BRANCH}\\\`](\${BRANCH_URL}) on [\${CI_NAME}](\${BUILD_URL}) :tada:\"}'" \
         "https://api.github.com/repos/\${PROJECT_OWNER}/\${PROJECT_NAME}/issues/\${BUILD_PR_NUM}/comments?access_token=\${GITHUB_TOKEN}"
 ```
+
+##### Display all env vars and save to `buildinfo.json`
+
+```shell
+cross-ci
+cross-ci > buildinfo.json
+```
+
 
 ## Variable Reference
 
