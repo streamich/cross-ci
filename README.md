@@ -50,6 +50,8 @@ npx cross-ci printenv BUILD_COMMIT_URL
 - [`PROJECT_URL`](#project_url)
 - [`PROJECT_VERSION`](#project_version)
 - [`RELEASE_BRANCHES`](#release_branches)
+- [`TIME`](#time)
+- [`TIMESTAMP`](#timestamp)
 - [`UPLOAD_PATH`](#upload_path)
 - [`YEAR`](#year)
 
@@ -308,6 +310,18 @@ defaults to `0.0.0`.
 
 Names of branches which should trigger a release,
 defaults to `['master', 'production']`.
+
+
+
+#### `TIME`
+
+Current time in UTC format.
+
+
+
+#### `TIMESTAMP`
+
+UNIX timestamp.
 
 
 
