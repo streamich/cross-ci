@@ -10,6 +10,12 @@ CircleCI or `TRAVIS_PULL_REQUEST_BRANCH` in Travis. Supports [all `env-ci` imple
 npm i cross-ci
 ```
 
+##### Install Globally
+
+```
+npm i -g cross-ci
+```
+
 ##### Node usage
 
 ```js
@@ -19,7 +25,7 @@ const vars = require('cross-ci').vars;
 ##### CLI usage
 
 ```
-npx cross-ci printenv BUILD_COMMIT_URL
+cross-ci printenv BUILD_COMMIT_URL
 ```
 
 ## Variables
@@ -63,13 +69,13 @@ npx cross-ci printenv BUILD_COMMIT_URL
 ##### `:echo`
 
 ```shell
-npx cross-ci :echo node --eval "\"console.log('\${PROJECT_NAME}')\""
+cross-ci :echo node --eval "\"console.log('\${PROJECT_NAME}')\""
 ```
 
 ##### `:run`
 
 ```shell
-npx cross-ci :run node --eval "\"console.log('\${PROJECT_NAME}')\""
+cross-ci :run node --eval "\"console.log('\${PROJECT_NAME}')\""
 ```
 
 ## Examples
@@ -87,14 +93,14 @@ npx cross-ci :run node --eval "\"console.log('\${PROJECT_NAME}')\""
 ##### Update GitHub status
 
 ```shell
-npx cross-ci :run \
+cross-ci :run \
     npx commit-status success Storybook "'\${BUILD_VERSION}'" "'https://example.com'"
 ```
 
 ##### Upload to S3
 
 ```shell
-npx cross-ci :run \
+cross-ci :run \
     s3 sync ./public "s3://bucket/builds/\${PROJECT_NAME}/\${BUILD_VERSION}/public" \
         --region eu-west-1 \
         --acl public-read
@@ -103,7 +109,7 @@ npx cross-ci :run \
 ##### Post to Slack
 
 ```shell
-npx cross-ci :run \
+cross-ci :run \
     curl -X POST -H 'Content-type: application/json' \
         --data "'{\
             \"text\":\"Built \\\`<\${PROJECT_URL}|\${PROJECT_NAME}>\\\` :crossed_fingers: \\\`<\${BRANCH_URL}|\${BUILD_BRANCH}>\\\` :crossed_fingers: \\\`\${BUILD_VERSION}\\\` on <\${BUILD_URL}|\${CI_NAME}> :tada:\", \
@@ -116,7 +122,7 @@ npx cross-ci :run \
 
 ```shell
 GITHUB_TOKEN=XXXXXXXX \
-    npx cross-ci :run \
+    cross-ci :run \
         curl -X POST -H "Content-Type: application/json" \
             --data "'{\"body\": \"Build version: \\\`\${BUILD_VERSION}\\\` :crossed_fingers: [\\\`\${BUILD_BRANCH}\\\`](\${BRANCH_URL}) on [\${CI_NAME}](\${BUILD_URL}) :tada:\"}'" \
         "https://api.github.com/repos/\${PROJECT_OWNER}/\${PROJECT_NAME}/issues/\${BUILD_PR_NUM}/comments?access_token=\${GITHUB_TOKEN}"
