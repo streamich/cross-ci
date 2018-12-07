@@ -249,4 +249,25 @@ describe('integration', () => {
             expect(evar('IS_CI', 'TRAVIS=yes')).toBe('true');
         });
     });
+
+    describe('TIME', () => {
+        test('returns a time string', () => {
+            const time = evar('TIME');
+            const date = new Date(time);
+
+            expect(typeof time).toBe('string');
+            expect(date.getTime()).toBeLessThanOrEqual(Date.now());
+            expect(date.getTime()).toBeGreaterThanOrEqual(Date.now() - 60 * 60);
+        });
+    });
+
+    describe('TIMESTAMP', () => {
+        test('returns a timestamp number', () => {
+            const time = parseInt(evar('TIMESTAMP'), 10);
+
+            expect(typeof time).toBe('number');
+            expect(time).toBeLessThanOrEqual(Date.now());
+            expect(time).toBeGreaterThanOrEqual(Date.now() - 60 * 60);
+        });
+    });
 });
