@@ -12,8 +12,7 @@
         "build": "npm run build:readme",
         "build:readme": "mmarkdown --src ./build/readme.md --out README.md --scripts ./build/mmd.js",
         "test": "jest",
-        "eslint": "eslint --ignore-path .gitignore './**/*.js'",
-        "prepush": "yarn test"
+        "eslint": "eslint --ignore-path .gitignore './**/*.js'"
     },
     "dependencies": {
         "env-ci": "^2.1.0"
