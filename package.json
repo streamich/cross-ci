@@ -15,7 +15,7 @@
         "eslint": "eslint --ignore-path .gitignore './**/*.js'"
     },
     "dependencies": {
-        "env-ci": "^2.1.0"
+        "env-ci": "^3.0.0"
     },
     "devDependencies": {
         "glob": "7.1.2",
